@@ -19,7 +19,19 @@ var questions = [{
         "for",
         "none of the above"],
     correctAnswer : 1
-}];
+},{
+    question : "what is my favourite blue color?",
+    choices : [ " light blue",
+        "dark blue/royal blue",
+        "Sky blue",
+        "None of the above"],
+    correctAnswer : 1},{
+    question : "which programming language is a basic language?",
+    choices : [ "C++",
+        "C shop",
+        "python",
+        "java"],
+    correctAnswer : 0}];
 
 var currentQuestion = 0;
 var correctAnswers = 0;
@@ -27,11 +39,24 @@ var quizOver = false;
 displayCurrentQuestion();
 document.getElementById("quiz-message").style.display = 'none';
 function displayNext() {
-    /*Write your code here */
+    if (currentQuestion < questions.length) {
+        currentQuestion++;
+        document.getElementById("choice-list").innerHTML = '';
+        displayCurrentQuestion();
+    }
+    else {
+        document.getElementById("next-button").innerText = 'play again';
+        currentQuestion=0;
+        displayCurrentQuestion();
+    }
+    if(currentQuestion===0);
+    document.getElementById("next-button").innerText="next question";
 }
-
 function displayCurrentQuestion() {
-    /*Write your code here */
+    document.getElementById("question").innerText=questions[currentQuestion].question;
+    for(var i=0;i<4;i++){
+     document.getElementById("choice-list").innerHTML +='<li><input type="radio">'+questions[currentQuestion] .choices[i]+'</li>';
+    }
 }
 
 function resetQuiz() {
